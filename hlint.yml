@@ -1,0 +1,15 @@
+# Not too useful, and needed to work-around brittany stupidities
+- ignore: {name: Redundant do}
+- ignore: {name: Redundant $}
+
+# Too sensitive
+- ignore: {name: Use newtype instead of data}
+- ignore: {name: Use camelCase}
+
+# Too pointless / trivial / subjective
+- ignore: {name: Use isNothing}
+- ignore: {name: Use <}
+
+- functions:
+  - {name: [fromIntegral, fromInteger, +, '-', '*', ^], within: [Safe.Numeric], message: "Use safe versions from Safe.Numeric"}
+  - {name: [div, mod, divMod, quot, rem, quotRem], within: [Safe.Numeric], message: "Use safe versions from Safe.Numeric"}
