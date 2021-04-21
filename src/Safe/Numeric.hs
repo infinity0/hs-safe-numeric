@@ -562,7 +562,7 @@ divE = explicitDiv div
 Same as 'Prelude.div' but indicates to the reader that you explicitly thought
 about this issue and decided that runtime exception is the correct behaviour.
 -}
-divX :: Integral a => a -> a -> a
+divX :: Integral a => Partial => a -> a -> a
 divX = div
 {-# INLINE divX #-}
 
@@ -576,7 +576,7 @@ modE = explicitDiv mod
 Same as 'Prelude.mod' but indicates to the reader that you explicitly thought
 about this issue and decided that runtime exception is the correct behaviour.
 -}
-modX :: Integral a => a -> a -> a
+modX :: Integral a => Partial => a -> a -> a
 modX = mod
 {-# INLINE modX #-}
 
@@ -590,7 +590,7 @@ divModE = explicitDiv divMod
 Same as 'Prelude.divMod' but indicates to the reader that you explicitly thought
 about this issue and decided that runtime exception is the correct behaviour.
 -}
-divModX :: Integral a => a -> a -> (a, a)
+divModX :: Integral a => Partial => a -> a -> (a, a)
 divModX = divMod
 {-# INLINE divModX #-}
 
@@ -604,7 +604,7 @@ quotE = explicitDiv quot
 Same as 'Prelude.quot' but indicates to the reader that you explicitly thought
 about this issue and decided that runtime exception is the correct behaviour.
 -}
-quotX :: Integral a => a -> a -> a
+quotX :: Integral a => Partial => a -> a -> a
 quotX = quot
 {-# INLINE quotX #-}
 
@@ -618,7 +618,7 @@ remE = explicitDiv rem
 Same as 'Prelude.rem' but indicates to the reader that you explicitly thought
 about this issue and decided that runtime exception is the correct behaviour.
 -}
-remX :: Integral a => a -> a -> a
+remX :: Integral a => Partial => a -> a -> a
 remX = rem
 {-# INLINE remX #-}
 
@@ -632,6 +632,6 @@ quotRemE = explicitDiv quotRem
 Same as 'Prelude.quotRem' but indicates to the reader that you explicitly thought
 about this issue and decided that runtime exception is the correct behaviour.
 -}
-quotRemX :: Integral a => a -> a -> (a, a)
+quotRemX :: Integral a => Partial => a -> a -> (a, a)
 quotRemX = quotRem
 {-# INLINE quotRemX #-}

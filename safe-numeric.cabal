@@ -1,6 +1,6 @@
 cabal-version:       2.4
 name:                safe-numeric
-version:             0.1
+version:             0.1.0.1
 synopsis:            Safe arithmetic operations.
 description:
  @safe-numeric@ provides safer numeric operators, that have more explicit
