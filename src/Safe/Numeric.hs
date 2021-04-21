@@ -4,7 +4,7 @@
 {-# LANGUAGE ScopedTypeVariables   #-}
 {-# LANGUAGE TypeSynonymInstances  #-}
 
-{- | Safe arithmetic operations.
+{- | Safe numeric operations.
 
 We take a fairly conservative approach here - this module is an extension not
 a replacement for "Prelude". Our suffix naming conventions are as follows:
@@ -42,11 +42,14 @@ your codebase, e.g. via hlint:
 
 -}
 module Safe.Numeric
-  ( Word29_
-  , Int29_
+  (
   -- * Conversions
-  , NumExpand(..)
+    NumExpand(..)
   , NumConvert(..)
+  -- ** Summary of instances
+  -- $instances
+  , Word29_
+  , Int29_
   -- * Arithmetic
   , (+@)
   , (+%)
@@ -153,9 +156,10 @@ type Word29_ = Word
 {- | Type alias for 'Int' that explicitly states its lower-bound size. -}
 type Int29_ = Int
 
-{-
+{- $instances
 
-Fr\To W8    W16   W29_  W32   W64   W128  W256  I8    I16   I29_  I32   I64   I128  I256  Itgr
+@
+Fr\\To W8    W16   W29_  W32   W64   W128  W256  I8    I16   I29_  I32   I64   I128  I256  Itgr
 W8    X     X     X     X     X     X     X           X     X     X     X     X     X     X
 W16         X     X     X     X     X     X                 X     X     X     X     X     X
 W29_              X                                                                       X
@@ -171,18 +175,20 @@ I64                                                                     X     X 
 I128                                                                          X     X     X
 I256                                                                                X     X
 Itgr                                                                                      X
+@
 
-In the above table, X means NumExpand, empty means NumConvert
+In the above table, X means 'NumExpand', empty means 'NumConvert'.
 
-Safe-nocheck-expand from W29_ and I29_ to other bounded types are not
+Safe, free 'NumExpand' from @W29_@ and @I29_@ to other bounded types are not
 guaranteed since there is no specified upper bound on the sizes of the former.
 
-Generally, we cannot have (NumExpand a b) *and* (NumExpand b a) unless b = a.
+Generally, we cannot have @NumExpand a b@ /and/ @NumExpand b a@ unless @b = a@.
 -}
 
 -- note: wide-word does not yet define Int256, so references to it below are
 -- commented out
 
+{- | -}
 instance NumExpand Word8 Word8
 instance NumExpand Word8 Word16
 instance NumExpand Word8 Word29_
